@@ -1,0 +1,14 @@
+Class::AlzaboWrapper
+
+This class is a base class intended to be used when wrapping
+Alzabo::Runtime::Row objects with a higher-level class, one that may
+span several tables.
+
+For an example of code which actually uses this module, please go to
+http://www.regveg.org/ and download the source code for the website.
+
+INSTALL
+
+  perl Makefile.PL
+  make test
+  make install
