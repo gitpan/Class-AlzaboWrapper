@@ -1,3 +1,11 @@
+0.05  2004-06-25
+
+- Added a new method, alzabo_attributes(), which can be called to find
+out what methods were created by calling import.  Also added
+_record_attribute_creation() so a custom subclass can record that it
+created an attribute method.
+
+
 0.04  2004-04-23
 
 - The last release broke the table_to_class() method (note to self:

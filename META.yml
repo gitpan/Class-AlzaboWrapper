@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name: Class-AlzaboWrapper
-version: 0.04
+version: 0.05
 author:
   - Dave Rolsky, <autarch@urth.org>
 abstract: |-
@@ -13,7 +13,7 @@ requires:
 provides:
   Class::AlzaboWrapper:
     file: lib/Class/AlzaboWrapper.pm
-    version: 0.04
+    version: 0.05
   Class::AlzaboWrapper::Cursor:
     file: lib/Class/AlzaboWrapper/Cursor.pm
-generated_by: Module::Build version 0.23
+generated_by: Module::Build version 0.25

@@ -4,7 +4,7 @@ use strict;
 
 use vars qw($VERSION);
 
-$VERSION = 0.04;
+$VERSION = 0.05;
 
 use Class::AlzaboWrapper::Cursor;
 
@@ -17,8 +17,8 @@ Params::Validate::validation_options
       sub { Class::AlzaboWrapper::Exception::Params->throw
                 ( message => join '', @_ ) } );
 
-my %ClassToTable;
 my %TableToClass;
+my %ClassAttributes;
 
 BEGIN
 {
@@ -56,7 +56,7 @@ sub import
 
 sub _make_methods
 {
-    shift;
+    my $class = shift;
 
     my %p = validate( @_,
                       { skip   => { type => ARRAYREF, default => [] },
@@ -72,6 +72,8 @@ sub _make_methods
 
         no strict 'refs';
         *{"$p{caller}\::$name"} = sub { shift->row_object->select($name) };
+
+        $class->_record_attribute_creation( $p{caller} => $name );
     }
 
     {
@@ -81,6 +83,8 @@ sub _make_methods
 
     $TableToClass{ $p{table}->name } = $p{caller};
 }
+
+sub _record_attribute_creation { push @{ $ClassAttributes{ $_[1] } }, $_[2] }
 
 sub new
 {
@@ -169,6 +173,13 @@ sub cursor
 sub row_object { $_[0]->{row} }
 
 sub table_to_class { $TableToClass{ $_[1]->name } }
+
+sub alzabo_attributes
+{
+    my $class = ref $_[0] || $_[0];
+
+    @{ $ClassAttributes{$class} };
+}
 
 
 1;
@@ -278,8 +289,13 @@ This may also be called as an object method.
 
 =item * table
 
-This methods returns the Alzbao table object associated with the
+This method returns the Alzabo table object associated with the
 subclass.  This may also be called as an object method.
+
+=item * alzabo_attributes
+
+Returns a list of accessor methods that were created based on the
+columns in the class's associated table.
 
 =item * cursor ($cursor)
 
@@ -372,6 +388,13 @@ example:
       $class->_make_more_methods(%p);
   }
 
+=head3 Attributes created by subclasses
+
+If you want to record the accessor methods your subclass makes so they
+are available via C<alzabo_attributes()>, you can call the
+C<_record_attribute_creation()> method, which expects two arguments.
+The first argument is the class for which the method was created and
+the second is the name of the method.
 
 =head1 SUPPORT
 
