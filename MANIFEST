@@ -8,3 +8,5 @@ MANIFEST
 META.yml
 README
 t/01_ini.t
+
+SIGNATURE    Added here by Module::Build

@@ -6,7 +6,7 @@ print "1..1
 my($test) = 1;
 
 # 1 load
-use Class::AlzaboWrapper;
+require Class::AlzaboWrapper;
 my($loaded) = 1;
 $loaded ? print "ok $test
 " : print "not ok $test

@@ -1,0 +1,33 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.38.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It would check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 2f234bb0e22f93e1a75f4372ee3cb98061f0b259 Build.PL
+SHA1 13a8657003797da45739ce1b334b3440aec00f4e Changes
+SHA1 f235ba4160673bcb7c9d58c2f09dbc7fc0efadea LICENSE
+SHA1 fcfe1d2b449a2e6d55db5861344fc3280a7fcf82 MANIFEST
+SHA1 5e8283f72aa3f8184e3095712aa39fda49d79896 META.yml
+SHA1 1849b2e69cd3bf568e221f73cf6e91ebae6489c0 Makefile.PL
+SHA1 cab246891f33406a3d0230fb06318a206fe0861c README
+SHA1 ef211e7cd27c51bb3a44051931370243a78e6732 lib/Class/AlzaboWrapper.pm
+SHA1 fcdf8ce97e652e839f0d90c34fb5002aec7f674b lib/Class/AlzaboWrapper/Cursor.pm
+SHA1 0073f25fa822c0702ced3dbb83079ce65c5fa680 t/01_ini.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.4 (GNU/Linux)
+
+iD8DBQFAFYQF+4tbS/niBUoRAv7ZAKDlfcpfD17MZkZe1l+CkFXADuCICQCgigLx
+7F4FXQCtKx3XEzDdL7eynOY=
+=O7z6
+-----END PGP SIGNATURE-----

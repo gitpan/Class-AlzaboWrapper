@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name: Class-AlzaboWrapper
-version: 0.01
+version: 0.02
 license: perl
 distribution_type: module
 requires:
@@ -13,8 +13,7 @@ conflicts: {}
 provides:
   Class::AlzaboWrapper:
     file: lib/Class/AlzaboWrapper.pm
-    version: 0.01
+    version: 0.02
   Class::AlzaboWrapper::Cursor:
     file: lib/Class/AlzaboWrapper/Cursor.pm
-    version: ~
-generated_by: Module::Build version 0.18
+generated_by: Module::Build version 0.21

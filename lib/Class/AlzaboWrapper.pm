@@ -4,7 +4,7 @@ use strict;
 
 use vars qw($VERSION);
 
-$VERSION = 0.01;
+$VERSION = 0.02;
 
 use Class::AlzaboWrapper::Cursor;
 
@@ -33,21 +33,35 @@ sub import
 {
     my $class = shift;
 
-    my $caller = (caller(0))[0];
+    # called via 'use base'
+    return unless @_;
 
-    $class->_make_methods( $caller, @_ ) if @_;
+    my %p =
+        validate_with( params => \@_,
+                       spec   =>
+                       { caller => { type    => SCALAR,
+                                     default => (caller(0))[0] },
+                         base   => { type    => SCALAR,
+                                     default => __PACKAGE__ },
+                       },
+                       allow_extra => 1,
+                     );
 
-    eval "package $caller; use base 'Class::AlzaboWrapper'";
+    my $base = delete $p{base};
+
+    $class->_make_methods(%p);
+
+    eval "package $p{caller}; use base '$base'";
 }
 
 sub _make_methods
 {
     shift;
 
-    my $class = shift;
     my %p = validate( @_,
-                      { skip  => { type => ARRAYREF, default => [] },
-                        table => { isa => 'Alzabo::Table' },
+                      { skip   => { type => ARRAYREF, default => [] },
+                        table  => { isa => 'Alzabo::Table' },
+                        caller => { type => SCALAR },
                       }
                     );
 
@@ -57,11 +71,11 @@ sub _make_methods
         next if $skip{$name};
 
         no strict 'refs';
-        *{"$class\::$name"} = sub { shift->row_object->select($name) };
+        *{"$p{caller}\::$name"} = sub { shift->row_object->select($name) };
     }
 
-    $ClassToTable{$class} = $p{table};
-    $TableToClass{ $p{table}->name } = $class;
+    $ClassToTable{ $p{caller} } = $p{table};
+    $TableToClass{ $p{table}->name } = $p{caller};
 }
 
 sub new
@@ -161,12 +175,11 @@ __END__
 
 =head1 NAME
 
-Class::AlzaboWrapper - Higher level wrapper around Alzabo Row objects
+Class::AlzaboWrapper - Higher level wrapper around Alzabo Row and Table objects
 
 =head1 SYNOPSIS
 
   use Class::AlzaboWrapper ( table => $schema->table('User') );
-  use base 'Class::AlzaboWrapper';
 
 =head1 DESCRIPTION
 
@@ -259,6 +272,11 @@ passed are given to the table's C<potential_row()> method as the
 This is simply a shortcut to the associated table's C<columns> method.
 This may also be called as an object method.
 
+=item * column
+
+This is simply a shortcut to the associated table's C<column> method.
+This may also be called as an object method.
+
 =item * table
 
 This methods returns the Alzbao table object associated with the
@@ -321,6 +339,40 @@ When using this module, you need to use the
 C<Class::AlzaboWrapper::Cursor> module to wrap Alzabo's cursor
 objects, so that objects the cursor returns are of the appropriate
 subclass, not plain C<Alzabo::Runtime::Row> objects.
+
+=head2 Subclassing
+
+If you want to subclass this module, you may want to override the
+C<import()> method in order to do something like create methods in the
+calling class.  If you do this, you should call Class::AlzaboWrapper's
+C<import()> method as well.  You'll need to override the "base" and
+"caller" parameters when doing this.  Set "base" to your subclass and
+"caller" to the class that called your import method.  Here is an
+example:
+
+  package My::AlzaboWrapper;
+
+  use base 'Class::AlzaboWrapper';
+
+  sub import
+  {
+      my $class = shift;
+
+      # called via use base
+      return unless @_;
+
+      my %p = @_;
+
+      my $caller = (caller(0))[0];
+
+      $class->SUPER::import( %p,
+                             base   => $class,
+                             caller => $caller,
+                           );
+
+      $class->_make_more_methods(%p);
+  }
+
 
 =head1 SUPPORT
 
