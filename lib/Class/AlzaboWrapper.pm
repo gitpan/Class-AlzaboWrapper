@@ -4,7 +4,7 @@ use strict;
 
 use vars qw($VERSION);
 
-$VERSION = 0.02;
+$VERSION = 0.03;
 
 use Class::AlzaboWrapper::Cursor;
 
@@ -74,8 +74,10 @@ sub _make_methods
         *{"$p{caller}\::$name"} = sub { shift->row_object->select($name) };
     }
 
-    $ClassToTable{ $p{caller} } = $p{table};
-    $TableToClass{ $p{table}->name } = $p{caller};
+    {
+        no strict 'refs';
+        *{"$p{caller}\::table"} = sub { $p{table} };
+    }
 }
 
 sub new
@@ -164,8 +166,6 @@ sub cursor
 
 sub row_object { $_[0]->{row} }
 
-sub table { $ClassToTable{ ref $_[0] ? ref $_[0] : $_[0] } }
-
 sub table_to_class { $TableToClass{ $_[1]->name } }
 
 
@@ -185,9 +185,6 @@ Class::AlzaboWrapper - Higher level wrapper around Alzabo Row and Table objects
 
 This module is intended for use as a base class when you are writing
 a class that wraps Alzabo's table and row classes.
-
-THIS MODULE IS STILL AN ALPHA RELEASE.  THE INTERFACE MAY CHANGE IN
-FUTURE RELEASES.
 
 =head1 USAGE
 

@@ -1,19 +1,19 @@
 --- #YAML:1.0
 name: Class-AlzaboWrapper
-version: 0.02
+version: 0.03
+author:
+  - Dave Rolsky, <autarch@urth.org>
+abstract: |-
+  Higher level wrapper around Alzabo Row and Table objects
 license: perl
-distribution_type: module
 requires:
   Alzabo: 0
   Exception::Class: 0
   Params::Validate: 0
-recommends: {}
-build_requires: {}
-conflicts: {}
 provides:
   Class::AlzaboWrapper:
     file: lib/Class/AlzaboWrapper.pm
-    version: 0.02
+    version: 0.03
   Class::AlzaboWrapper::Cursor:
     file: lib/Class/AlzaboWrapper/Cursor.pm
-generated_by: Module::Build version 0.21
+generated_by: Module::Build version 0.23
