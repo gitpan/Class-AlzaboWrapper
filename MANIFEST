@@ -4,9 +4,10 @@ lib/Class/AlzaboWrapper.pm
 lib/Class/AlzaboWrapper/Cursor.pm
 LICENSE
 Makefile.PL
-MANIFEST
+MANIFEST			This list of files
 META.yml
 README
 t/01_ini.t
+t/99-pod.t
 
 SIGNATURE    Added here by Module::Build

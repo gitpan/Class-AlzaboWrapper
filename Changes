@@ -1,3 +1,9 @@
+0.06  2004-09-23
+
+- The cursor object new method now accepts a constructor_method
+argument.
+
+
 0.05  2004-06-25
 
 - Added a new method, alzabo_attributes(), which can be called to find

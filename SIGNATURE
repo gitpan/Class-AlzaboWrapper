@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.38.
+signed via the Module::Signature module, version 0.39.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -15,19 +15,20 @@ not run its Makefile.PL or Build.PL.
 Hash: SHA1
 
 SHA1 2f234bb0e22f93e1a75f4372ee3cb98061f0b259 Build.PL
-SHA1 abca5d5c24c7e1c5c1a4d736ac2bd76789505092 Changes
+SHA1 5b81c86a1b6c06d694355cf6525cb7a33f35367b Changes
 SHA1 f235ba4160673bcb7c9d58c2f09dbc7fc0efadea LICENSE
-SHA1 fcfe1d2b449a2e6d55db5861344fc3280a7fcf82 MANIFEST
-SHA1 cfbdb82af403510cbfc273045381009f23db6c40 META.yml
+SHA1 7083bfc9cfa8432c77ec6535903fc0ee074a5345 MANIFEST
+SHA1 8d0d9474ce8d8e34810b4b61fe245e1cbcf102a6 META.yml
 SHA1 1099db72cd05ad1cad02a0b579d5f8c9786e1e92 Makefile.PL
 SHA1 cab246891f33406a3d0230fb06318a206fe0861c README
-SHA1 426ad5075c65c28a99ae28dca26e4519a6a2a2d1 lib/Class/AlzaboWrapper.pm
-SHA1 fcdf8ce97e652e839f0d90c34fb5002aec7f674b lib/Class/AlzaboWrapper/Cursor.pm
+SHA1 b3d084ef461d7829c12237e03be754c2ef38a08a lib/Class/AlzaboWrapper.pm
+SHA1 84818a1438c7f38e18ba74f1b6536c169b3a05b8 lib/Class/AlzaboWrapper/Cursor.pm
 SHA1 0073f25fa822c0702ced3dbb83079ce65c5fa680 t/01_ini.t
+SHA1 77232b92127c5f3069f8b6d349aa5ef49ca1b9d4 t/99-pod.t
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.4 (GNU/Linux)
+Version: GnuPG v1.2.5 (GNU/Linux)
 
-iD8DBQFA3PdY+4tbS/niBUoRAgoVAJ9LIdcadfPh2XZBQLQx2iV/RrUV6wCfQZd+
-0rIHqYSYFYWhhMHxcHuSNRU=
-=VdiY
+iD8DBQFBUvy+3Or3ZzQuifMRAj8wAKCpieptWVBrlS8WAYngA/0bzQsK/wCfSdYs
+A4SXlBrEuUSC7VvBBpluMDM=
+=Y1hw
 -----END PGP SIGNATURE-----

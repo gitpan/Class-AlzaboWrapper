@@ -4,7 +4,7 @@ use strict;
 
 use Class::AlzaboWrapper;
 
-use Params::Validate qw( validate_with ARRAYREF );
+use Params::Validate qw( validate_with SCALAR ARRAYREF );
 Params::Validate::validation_options
     ( on_fail =>
       sub { Class::AlzaboWrapper::Exception::Params->throw
@@ -18,6 +18,7 @@ sub new
                            spec =>
                            { cursor => { can => 'next' },
                              args   => { type => ARRAYREF, default => [] },
+                             constructor_method => { type => SCALAR, default => 'new' },
                            },
                            allow_extra => 1,
                          );
@@ -38,8 +39,10 @@ sub _new_from_row
 
     my $class = Class::AlzaboWrapper->table_to_class( $row->table );
 
+    my $meth = $self->{constructor_method};
+
     return
-        $class->new
+        $class->$meth
             ( object => $row,
               @{ $self->{args} },
             );
@@ -118,6 +121,10 @@ by this class.
 It also takes an "args" parameter.  This is an optional array
 reference.  If given, then the arguments specified will be passed when
 calling C<new()> for the appropriate subclass(es).
+
+The "constructor_method" argument allows you to specify what method to
+call when fetching the next object via C<next()>.  This defaults to
+"new".
 
 =item * next
 
