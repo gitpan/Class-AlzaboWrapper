@@ -1,3 +1,9 @@
+0.04  2004-04-23
+
+- The last release broke the table_to_class() method (note to self:
+tests would be good).
+
+
 0.03  2004-04-23
 
 - Make the table() method work in subclasses of classes which inherit

@@ -4,7 +4,7 @@ use strict;
 
 use vars qw($VERSION);
 
-$VERSION = 0.03;
+$VERSION = 0.04;
 
 use Class::AlzaboWrapper::Cursor;
 
@@ -78,6 +78,8 @@ sub _make_methods
         no strict 'refs';
         *{"$p{caller}\::table"} = sub { $p{table} };
     }
+
+    $TableToClass{ $p{table}->name } = $p{caller};
 }
 
 sub new
