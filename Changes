@@ -1,3 +1,13 @@
+0.07
+
+- Added a next_as_hash method to Class::AlzaboWrapper::Cursor.  Patch
+by Eric Waters.
+
+- Allow create() to take extra parameters just like new() does, so
+that when _init() is eventually called it can work the same way for
+both create() and new().
+
+
 0.06  2004-09-23
 
 - The cursor object new method now accepts a constructor_method

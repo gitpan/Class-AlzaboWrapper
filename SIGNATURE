@@ -1,12 +1,12 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.39.
+signed via the Module::Signature module, version 0.44.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
 
     % cpansign -v
 
-It would check each file's integrity, as well as the signature's
+It will check each file's integrity, as well as the signature's
 validity.  If "==> Signature verified OK! <==" is not displayed,
 the distribution may already have been compromised, and you should
 not run its Makefile.PL or Build.PL.
@@ -15,20 +15,20 @@ not run its Makefile.PL or Build.PL.
 Hash: SHA1
 
 SHA1 2f234bb0e22f93e1a75f4372ee3cb98061f0b259 Build.PL
-SHA1 5b81c86a1b6c06d694355cf6525cb7a33f35367b Changes
+SHA1 c4b2eccec4c531bf134fd94862fa286b5f8b1d30 Changes
 SHA1 f235ba4160673bcb7c9d58c2f09dbc7fc0efadea LICENSE
-SHA1 7083bfc9cfa8432c77ec6535903fc0ee074a5345 MANIFEST
-SHA1 8d0d9474ce8d8e34810b4b61fe245e1cbcf102a6 META.yml
-SHA1 1099db72cd05ad1cad02a0b579d5f8c9786e1e92 Makefile.PL
+SHA1 bf500326ec60611958fe323c2d054cc00a2fc401 MANIFEST
+SHA1 8543dfd9acb06ca24e4b5c09a5a2b32c0181df6b META.yml
+SHA1 a359d4072690a21ce63e4b393bdbc19d72b6be5a Makefile.PL
 SHA1 cab246891f33406a3d0230fb06318a206fe0861c README
-SHA1 b3d084ef461d7829c12237e03be754c2ef38a08a lib/Class/AlzaboWrapper.pm
-SHA1 84818a1438c7f38e18ba74f1b6536c169b3a05b8 lib/Class/AlzaboWrapper/Cursor.pm
+SHA1 e1f7a38865e77921b99b4cccd6dd6dc90fbc1861 lib/Class/AlzaboWrapper.pm
+SHA1 9cc8f5f0f06a179ff9f4abc9f2f54651adc2b16a lib/Class/AlzaboWrapper/Cursor.pm
 SHA1 0073f25fa822c0702ced3dbb83079ce65c5fa680 t/01_ini.t
 SHA1 77232b92127c5f3069f8b6d349aa5ef49ca1b9d4 t/99-pod.t
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.5 (GNU/Linux)
+Version: GnuPG v1.4.1 (GNU/Linux)
 
-iD8DBQFBUvy+3Or3ZzQuifMRAj8wAKCpieptWVBrlS8WAYngA/0bzQsK/wCfSdYs
-A4SXlBrEuUSC7VvBBpluMDM=
-=Y1hw
+iD8DBQFDHpCq3Or3ZzQuifMRAhRiAKDzozu05fBF7PmppMVTKIKwOOeadQCgnHyh
+PqeSpmL/ipujZEAV0tSMZ9k=
+=ICCa
 -----END PGP SIGNATURE-----

@@ -69,6 +69,16 @@ sub next
     return wantarray ? @r : $r[0];
 }
 
+sub next_as_hash
+{
+    my $self = shift;
+
+    my %hash = $self->{cursor}->next_as_hash or return;
+    map { $hash{$_} = $self->_new_from_row($hash{$_}) } keys %hash;
+
+    return %hash;
+}
+
 sub all
 {
     my $self = shift;
@@ -134,6 +144,13 @@ C<Class::AlzaboWrapper> subclass for each C<Alzabo::Runtime::Row>
 object returned by the wrapped cursor.  It can be called in scalar or
 array context, but in scalar context it will only return the first
 object when there are more than one, so be careful.
+
+=item * next_as_hash
+
+Wrapper for the cursor's C<next_as_hash()> method, it behaves the same
+as C<next> in that each row is returned as an appropriate
+C<Class::AlzaboWrapper> subclass object.  Returns a hash keyed to the
+table name(s).
 
 =item * all
 

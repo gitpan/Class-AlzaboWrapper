@@ -4,7 +4,7 @@ use strict;
 
 use vars qw($VERSION);
 
-$VERSION = 0.06;
+$VERSION = 0.07;
 
 use Class::AlzaboWrapper::Cursor;
 
@@ -142,20 +142,28 @@ sub params_exception { shift; die @_ }
 sub create
 {
     my $class = shift;
+    my %p = @_;
+
+    my %values;
+
+    for my $c ( map { $_->name } $class->table->columns )
+    {
+        $values{$c} = delete $p{$c} if exists $p{$c};
+    }
 
     my $row =
         $class->table->insert
-            ( values => { @_ } );
+            ( values => \%values );
 
-    return $class->new( object => $row );
+    return $class->new( object => $row, %p );
 }
 
 sub potential
 {
-    my $self = shift;
+    my $class = shift;
 
     return
-        $self->new( object => $self->table->potential_row( values => {@_} ) );
+        $class->new( object => $class->table->potential_row( values => {@_} ) );
 }
 
 sub columns { shift->table->columns(@_) }

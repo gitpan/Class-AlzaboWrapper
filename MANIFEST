@@ -9,5 +9,4 @@ META.yml
 README
 t/01_ini.t
 t/99-pod.t
-
 SIGNATURE    Added here by Module::Build
