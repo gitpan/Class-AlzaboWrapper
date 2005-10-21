@@ -1,3 +1,8 @@
+0.11  2005-10-21
+
+- Fix a number of methods which were accidentally broken in 0.10.
+
+
 0.10  2005-10-21
 
 * This release deprecates a number of methods, though it should be

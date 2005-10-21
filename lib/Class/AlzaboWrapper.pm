@@ -4,7 +4,7 @@ use strict;
 
 use vars qw($VERSION);
 
-$VERSION = '0.10';
+$VERSION = '0.11';
 
 use Class::AlzaboWrapper::Cursor;
 
@@ -23,12 +23,12 @@ my %ClassAttributes;
 
 BEGIN
 {
-    foreach my $sub ( qw( select update delete is_live ) )
+    foreach my $meth ( qw( select update delete is_live ) )
     {
-        my $sub = sub { shift->row_object->$sub(@_) };
+        my $sub = sub { shift->row_object->$meth(@_) };
 
         no strict 'refs';
-        *{ __PACKAGE__ ."::$sub" } = $sub;
+        *{ __PACKAGE__ . "::$meth" } = $sub;
     }
 }
 

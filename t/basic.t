@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use Alzabo::Create::Schema;
-use Test::More tests => 8;
+use Test::More tests => 9;
 
 use_ok('Class::AlzaboWrapper');
 
@@ -29,6 +29,8 @@ my $schema = _test_schema();
     ::is_deeply( [ sort __PACKAGE__->AlzaboAttributes() ],
                  [ qw( bio user_id username ) ],
                  'check AlzaboAttributes()' );
+
+    ::can_ok( __PACKAGE__, qw( new create select update delete is_live ) );
 }
 
 {
