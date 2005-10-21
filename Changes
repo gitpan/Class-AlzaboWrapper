@@ -1,4 +1,18 @@
-0.07
+0.10  2005-10-21
+
+* This release deprecates a number of methods, though it should be
+backwards compatible with previous versions.
+
+* Instead of having Class::AlzaboWrapper insert itself as a parent
+class for classes which import it, you are encouraged to "use base
+'Class::AlzaboWrapper'".
+
+* Instead of passing a table to the import, you are encouraged to call
+SetAlzaboTable() and MakeColumnMethods().
+
+* A number of class methods have been renamed to use StudlyCaps, such
+as Table(), AlzaboAttributes(), etc.  The old lower_case versions
+still work.  See the docs for details.
 
 - Added a next_as_hash method to Class::AlzaboWrapper::Cursor.  Patch
 by Eric Waters.

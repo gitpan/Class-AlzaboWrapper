@@ -37,7 +37,7 @@ sub _new_from_row
     return undef unless defined $row;
     return $row if $row->isa( 'Class::AlzaboWrapper' );
 
-    my $class = Class::AlzaboWrapper->table_to_class( $row->table );
+    my $class = Class::AlzaboWrapper->TableToClass( $row->table );
 
     my $meth = $self->{constructor_method};
 
@@ -110,8 +110,9 @@ Class::AlzaboWrapper::Cursor - Higher level wrapper around Alzabo cursor objects
 =head1 DESCRIPTION
 
 This module works with C<Class::AlzaboWrapper> to make sure that
-objects returned from cursors are of the appropriate subclass, not raw
-C<Alzabo::Runtime::Cursor> objects.
+objects returned from cursors are of the appropriate
+C<Class::AlzaboWrapper> subclass, not raw C<Alzabo::Runtime::Cursor>
+objects.
 
 THIS MODULE IS STILL AN ALPHA RELEASE.  THE INTERFACE MAY CHANGE IN
 FUTURE RELEASES.
@@ -178,7 +179,7 @@ see your questions.
 
 =head1 COPYRIGHT
 
-Copyright (c) 2002-2003 David Rolsky.  All rights reserved.  This
+Copyright (c) 2002-2005 David Rolsky.  All rights reserved.  This
 program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
 
