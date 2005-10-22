@@ -1,3 +1,11 @@
+0.12  2005-10-22
+
+- Having a function Class::AlzaboWrapper::Cursor() and a class named
+Class::AlzaboWrapper::Cursor apparently confuses the heck out of the
+Perl interpreter.  Renamed Cursor() to NewCursor().  The former
+method name, cursor(), works as well.
+
+
 0.11  2005-10-21
 
 - Fix a number of methods which were accidentally broken in 0.10.

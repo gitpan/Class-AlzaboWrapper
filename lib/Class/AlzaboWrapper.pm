@@ -4,7 +4,7 @@ use strict;
 
 use vars qw($VERSION);
 
-$VERSION = '0.11';
+$VERSION = '0.12';
 
 use Class::AlzaboWrapper::Cursor;
 
@@ -121,7 +121,7 @@ sub MakeColumnMethods
 
 sub _RecordAttributeCreation { push @{ $ClassAttributes{ $_[1] } }, $_[2] }
 # deprecated
-*record_attribute_creation = \&_RecordAttributeCreation;
+*_record_attribute_creation = \&_RecordAttributeCreation;
 
 sub new
 {
@@ -207,16 +207,18 @@ sub Columns { shift->table->columns(@_) }
 *columns = \&Columns;
 *column = \&Columns;
 
-sub Cursor
+sub NewCursor
 {
     my $self = shift;
+    my $cursor = shift;
 
     return
         Class::AlzaboWrapper::Cursor->new
-            ( cursor => shift );
+            ( cursor => $cursor );
 }
 # deprecated
-*cursor = \&Cursor;
+*cursor = \&NewCursor;
+
 
 sub TableToClass { $TableToClass{ $_[1]->name } }
 # deprecated
@@ -340,7 +342,7 @@ subclass.  This may also be called as an object method.
 Returns a list of accessor methods that were created based on the
 columns in the class's associated table.
 
-=item * Cursor ($cursor)
+=item * NewCursor ($cursor)
 
 Given an C<Alzabo::Runtime::Cursor> object (either a row or join
 cursor), this method returns a new C<Class::AlzaboWrapper::Cursor>
