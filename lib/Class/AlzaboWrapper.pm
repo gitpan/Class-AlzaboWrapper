@@ -4,11 +4,12 @@ use strict;
 
 use vars qw($VERSION);
 
-$VERSION = '0.12';
+$VERSION = '0.13';
 
 use Class::AlzaboWrapper::Cursor;
 
-use Exception::Class ( 'Class::AlzaboWrapper::Exception::Params' );
+use Exception::Class ( qw( Class::AlzaboWrapper::Exception Class::AlzaboWrapper::Exception::Params ) );
+Class::AlzaboWrapper::Exception->Trace(1);
 Class::AlzaboWrapper::Exception::Params->Trace(1);
 
 use Params::Validate qw( validate validate_pos validate_with SCALAR UNDEF ARRAYREF HASHREF );
@@ -86,8 +87,9 @@ sub Table
 {
     my $class = ref $_[0] || $_[0];
 
-    die "Must call SetTable() before calling Table()"
-         unless $ClassToTable{$class};
+    Class::AlzaboWrapper::Exception->throw
+        ( error => "Must call SetTable() before calling Table() on $class" )
+            unless $ClassToTable{$class};
 
     return $ClassToTable{$class};
 

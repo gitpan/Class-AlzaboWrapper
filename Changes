@@ -1,3 +1,17 @@
+0.13 2006-07-21
+
+- Class::AlzaboWrapper::Cusor->next() will die with a useful error
+message if it encounters a table for which there is no corresponding
+class.
+
+- Use Exception::Class exceptions instead of die(), so all errors
+should include a stack trace.
+
+- The tests foolishly assumed you had MySQL available. Now the tests
+try to use MySQL or Postgres, whichever is available. Reported by Joe
+McMahon.
+
+
 0.12  2005-10-22
 
 - Having a function Class::AlzaboWrapper::Cursor() and a class named

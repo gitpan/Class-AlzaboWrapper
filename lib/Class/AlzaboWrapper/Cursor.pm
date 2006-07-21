@@ -38,6 +38,9 @@ sub _new_from_row
     return $row if $row->isa( 'Class::AlzaboWrapper' );
 
     my $class = Class::AlzaboWrapper->TableToClass( $row->table );
+    Class::AlzaboWrapper::Exception->throw
+        ( error => "Cannot find a class for " . $row->table->name . " table" )
+            unless $class;
 
     my $meth = $self->{constructor_method};
 

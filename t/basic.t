@@ -57,9 +57,17 @@ my $schema = _test_schema();
 
 sub _test_schema
 {
-    my $schema = Alzabo::Create::Schema->new( name  => 'testing_class_alzabowrapper',
-                                              rdbms => 'MySQL',
-                                            );
+    my $dbms =
+        ( eval { require Alzabo::Driver::MySQL; 1 }
+          ? 'MySQL'
+          : 'PostgreSQL'
+        );
+
+    my $schema =
+        Alzabo::Create::Schema->new
+            ( name  => 'testing_class_alzabowrapper',
+              rdbms => $dbms,
+            );
 
     my $user_t = $schema->make_table( name => 'User' );
     $user_t->make_column( name => 'user_id',
