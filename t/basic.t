@@ -4,11 +4,17 @@ use strict;
 use warnings;
 
 use Alzabo::Create::Schema;
-use Test::More tests => 9;
+use Class::AlzaboWrapper;
+use Test::More;
 
-use_ok('Class::AlzaboWrapper');
 
 my $schema = _test_schema();
+
+plan skip_all => 'Requires DBD::mysql or DBD::PG'
+    unless $schema;
+
+plan tests => 8;
+
 
 {
     package TestPackage1;
@@ -60,8 +66,12 @@ sub _test_schema
     my $dbms =
         ( eval { require Alzabo::Driver::MySQL; 1 }
           ? 'MySQL'
-          : 'PostgreSQL'
+          : eval { require Alzabo::Driver::PostgreSQL; 1 }
+          ? 'PostgreSQL'
+          : undef
         );
+
+    return unless $dbms;
 
     my $schema =
         Alzabo::Create::Schema->new

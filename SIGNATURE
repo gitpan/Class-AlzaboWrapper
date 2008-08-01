@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.44.
+signed via the Module::Signature module, version 0.55.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -14,21 +14,21 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 813a93fe44c16b057de5d03e65681b7e1fc27a84 Build.PL
-SHA1 515a3f13d096c86811ca1ac1478c9dbf3c656835 Changes
+SHA1 912a9e0982a9c9d766e49c44ba31f97eac61c4eb Build.PL
+SHA1 d5774179d4e165872f2c4795aa94b5b604cf69f5 Changes
 SHA1 f235ba4160673bcb7c9d58c2f09dbc7fc0efadea LICENSE
-SHA1 a9838dd667dcd628e861fb558f030686cc755666 MANIFEST
-SHA1 259960368c74a4dd4013c92cff9853b470cacdc9 META.yml
+SHA1 2d5c141f597c4b1dc41235b007c5b2abe0367f2a MANIFEST
+SHA1 5f6046795889976552f56469ac9c0355ebfdffeb META.yml
 SHA1 cd14ada78fb37a0d926edd86eddcdf7f939de582 Makefile.PL
-SHA1 cab246891f33406a3d0230fb06318a206fe0861c README
-SHA1 37d86e2514f20593cc875442293e2e5e07a10d5d lib/Class/AlzaboWrapper.pm
+SHA1 f41b698f7eb8a001d8aca9acc6ce0a36b1c96eee README
+SHA1 90dd2d15fbbc8d39dbfb817b66aef6dd4067348d lib/Class/AlzaboWrapper.pm
 SHA1 635b4edae76d3023fa97736e1b126cf85be79376 lib/Class/AlzaboWrapper/Cursor.pm
 SHA1 77232b92127c5f3069f8b6d349aa5ef49ca1b9d4 t/99-pod.t
-SHA1 c4be0ca9413e9db349208253d66f5b0c4d77cf44 t/basic.t
+SHA1 c15bd640d4124f192abb5d883b282808dce8520d t/basic.t
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2.2 (GNU/Linux)
+Version: GnuPG v1.4.6 (GNU/Linux)
 
-iD8DBQFEwN3q3Or3ZzQuifMRAgUEAJ4sgh3Ih49u0nUYAcVr8y45DRyTiACeL6IT
-HvEotSJt25D8nxsS/n+blvo=
-=zHfn
+iD8DBQFIkxAT3Or3ZzQuifMRAn3ZAKCyjCkb8cH6fB2L+OEmJ3nqh+5yMgCg4P3Z
+nSFnDJGK4BiotIYavhpMQ1U=
+=Uzdj
 -----END PGP SIGNATURE-----

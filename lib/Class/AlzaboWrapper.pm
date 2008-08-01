@@ -4,7 +4,7 @@ use strict;
 
 use vars qw($VERSION);
 
-$VERSION = '0.13';
+$VERSION = '0.14';
 
 use Class::AlzaboWrapper::Cursor;
 
@@ -114,7 +114,15 @@ sub MakeColumnMethods
 
         $class->_RecordAttributeCreation( $class => $name );
 
-        my $sub = sub { shift->row_object->select($name) };
+        my $cache_key = '__cache__' . $name;
+
+        my $sub = sub { my $self = shift;
+
+                        return $self->{$cache_key}
+                            if exists $self->{$cache_key};
+
+                        $self->{$cache_key} = $self->row_object->select($name);
+                      };
 
         no strict 'refs';
         *{"$class\::$name"} = $sub;

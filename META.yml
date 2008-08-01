@@ -1,6 +1,6 @@
 ---
 name: Class-AlzaboWrapper
-version: 0.13
+version: 0.14
 author:
   - 'Dave Rolsky, <autarch@urth.org>'
 abstract: Higher level wrapper around Alzabo Row and Table objects
@@ -17,10 +17,10 @@ build_requires:
 provides:
   Class::AlzaboWrapper:
     file: lib/Class/AlzaboWrapper.pm
-    version: 0.13
+    version: 0.14
   Class::AlzaboWrapper::Cursor:
     file: lib/Class/AlzaboWrapper/Cursor.pm
-generated_by: Module::Build version 0.2801
+generated_by: Module::Build version 0.2808
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
   version: 1.2

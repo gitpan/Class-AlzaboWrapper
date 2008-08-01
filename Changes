@@ -1,3 +1,8 @@
+0.14 2008-08-01
+
+- Add a simple cache for column methods inside the object.
+
+
 0.13 2006-07-21
 
 - Class::AlzaboWrapper::Cusor->next() will die with a useful error
